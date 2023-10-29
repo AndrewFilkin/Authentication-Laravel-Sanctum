@@ -4,10 +4,12 @@ Copy git repository <br/>
 ```bash
 git clone https://github.com/AndrewFilkin/docker-laravel.git name_project
 ```
+
 Run docker. <br/> 
 ```bash
 docker-compose up -d
 ```
+
 install laravel <br/>
 ```bash
 docker-compose run --rm composer create-project laravel/laravel .
