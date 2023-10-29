@@ -1,18 +1,40 @@
-run: docker-compose up -d
--------------------------
-install laravel: docker-compose run --rm composer create-project laravel/laravel .
--------------------------
-run artisan: docker-compose run --rm artisan migrate
--------------------------
-Redis
--------------------------
-docker-compose run --rm composer require predis/predis <br/>
---.env-- <br/>
+# Run Laravel with Docker Compose
+
+Copy git repository <br/>
+```bash
+git clone https://github.com/AndrewFilkin/docker-laravel.git name_project
+```
+Run docker. <br/> 
+```bash
+docker-compose up -d
+```
+install laravel <br/>
+```bash
+docker-compose run --rm composer create-project laravel/laravel .
+```
+
+run artisan command <br/>
+```bash
+docker-compose run --rm artisan migrate
+```
+
+## Redis
+Download library
+```bash
+docker-compose run --rm composer require predis/predis
+```
+
+Change `.env` <br/>
+
+```bash
 REDIS_HOST=redis
 REDIS_PASSWORD=null
-`#REDIS_PORT=6379` <br/>
---config/database.php-- <br/>
+#REDIS_PORT=6379
 ```
+
+Change config/database.php <br/>
+
+```bash
 'redis' => [
         'client' => env('REDIS_CLIENT', 'predis'),
         'options' => [
@@ -37,15 +59,22 @@ REDIS_PASSWORD=null
         ],
     ],
 ```
--------------------------
-Testing
--------------------------
-add .env <br/>
-DB_CONNECTION=sqlite <br/>
-DB_DATABASE=:memory: <br/>
-other need to comment out
--------------------------
-phpunit.xml <br/>
-uncomment lines <br/>
-`<env name="DB_CONNECTION" value="sqlite"/>` <br/>
-`<env name="DB_DATABASE" value=":memory:"/>` <br/>
+
+## Testing
+
+Change `.env` <br/>
+
+```bash
+DB_CONNECTION=sqlite
+DB_DATABASE=:memory:
+```
+Other connection need to comment out <br/>
+
+In file `phpunit.xml` uncomment lines <br/>
+
+```bash
+<env name="DB_CONNECTION" value="sqlite"/>
+<env name="DB_DATABASE" value=":memory:"/>
+```
+
+
