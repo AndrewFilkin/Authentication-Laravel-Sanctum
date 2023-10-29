@@ -1,6 +1,7 @@
 # Run Laravel with Docker Compose
 
 Copy git repository
+
 ```
 git clone https://github.com/AndrewFilkin/docker-laravel.git name_project
 ```
@@ -17,7 +18,8 @@ Install laravel
 docker-compose run --rm composer create-project laravel/laravel .
 ```
 
-run artisan command <br/>
+Run artisan command
+
 ```bash
 docker-compose run --rm artisan migrate
 ```
@@ -68,12 +70,13 @@ Change config/database.php <br/>
 ## Testing
 
 Change `.env` <br/>
+Other connection need to comment out
 
 ```
 DB_CONNECTION=sqlite
 DB_DATABASE=:memory:
 ```
-Other connection need to comment out <br/>
+
 
 In file `phpunit.xml` uncomment lines <br/>
 
