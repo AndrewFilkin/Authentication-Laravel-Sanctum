@@ -1,6 +1,6 @@
 # Run Laravel with Docker Compose
 
-## Copy git repository <br/>
+Copy git repository
 ```
 git clone https://github.com/AndrewFilkin/docker-laravel.git name_project
 ```
