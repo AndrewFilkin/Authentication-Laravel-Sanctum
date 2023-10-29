@@ -84,5 +84,5 @@ In file `phpunit.xml` uncomment lines <br/>
 <env name="DB_CONNECTION" value="sqlite"/>
 <env name="DB_DATABASE" value=":memory:"/>
 ```
-
+<div align="center"> Developed With Love ! ❤️</div>
 
