@@ -30,6 +30,8 @@ services:
 #            - "6378:6379"
 #        env_file:
 #            - env/redis.env
+#        volumes:
+#            - db_data:/data
 #        networks:
 #            - laravel
 
@@ -51,7 +53,7 @@ services:
         env_file:
             - env/pgsql.env
         volumes:
-            - db_data:/var/lib/pgsql
+            - db_data:/var/lib/postgresql/data
         networks:
             - laravel
 
