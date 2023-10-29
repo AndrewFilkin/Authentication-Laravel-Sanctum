@@ -1,6 +1,6 @@
 # Run Laravel with Docker Compose
 
-Copy git repository <br/>
+## Copy git repository <br/>
 ```
 git clone https://github.com/AndrewFilkin/docker-laravel.git name_project
 ```
@@ -24,6 +24,7 @@ docker-compose run --rm artisan migrate
 
 ## Redis
 Download library
+
 ```bash
 docker-compose run --rm composer require predis/predis
 ```
@@ -38,7 +39,7 @@ REDIS_PASSWORD=null
 
 Change config/database.php <br/>
 
-```bash
+```
 'redis' => [
         'client' => env('REDIS_CLIENT', 'predis'),
         'options' => [
