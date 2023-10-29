@@ -5,7 +5,7 @@ Copy git repository
 git clone https://github.com/AndrewFilkin/docker-laravel.git name_project
 ```
 
-Run docker 
+`cd` project folder and run docker 
 
 ```bash
 docker-compose up -d
