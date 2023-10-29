@@ -5,12 +5,14 @@ Copy git repository <br/>
 git clone https://github.com/AndrewFilkin/docker-laravel.git name_project
 ```
 
-Run docker. <br/> 
+Run docker 
+
 ```bash
 docker-compose up -d
 ```
 
-install laravel <br/>
+Install laravel 
+
 ```
 docker-compose run --rm composer create-project laravel/laravel .
 ```
@@ -36,7 +38,7 @@ REDIS_PASSWORD=null
 
 Change config/database.php <br/>
 
-```
+```bash
 'redis' => [
         'client' => env('REDIS_CLIENT', 'predis'),
         'options' => [
