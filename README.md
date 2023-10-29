@@ -1,7 +1,7 @@
 # Run Laravel with Docker Compose
 
 Copy git repository <br/>
-```bash
+```
 git clone https://github.com/AndrewFilkin/docker-laravel.git name_project
 ```
 
@@ -11,7 +11,7 @@ docker-compose up -d
 ```
 
 install laravel <br/>
-```bash
+```
 docker-compose run --rm composer create-project laravel/laravel .
 ```
 
@@ -28,7 +28,7 @@ docker-compose run --rm composer require predis/predis
 
 Change `.env` <br/>
 
-```bash
+```
 REDIS_HOST=redis
 REDIS_PASSWORD=null
 #REDIS_PORT=6379
@@ -36,7 +36,7 @@ REDIS_PASSWORD=null
 
 Change config/database.php <br/>
 
-```bash
+```
 'redis' => [
         'client' => env('REDIS_CLIENT', 'predis'),
         'options' => [
@@ -66,7 +66,7 @@ Change config/database.php <br/>
 
 Change `.env` <br/>
 
-```bash
+```
 DB_CONNECTION=sqlite
 DB_DATABASE=:memory:
 ```
@@ -74,7 +74,7 @@ Other connection need to comment out <br/>
 
 In file `phpunit.xml` uncomment lines <br/>
 
-```bash
+```
 <env name="DB_CONNECTION" value="sqlite"/>
 <env name="DB_DATABASE" value=":memory:"/>
 ```
