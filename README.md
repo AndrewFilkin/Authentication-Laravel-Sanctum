@@ -17,6 +17,11 @@ Install laravel
 ```
 docker-compose run --rm composer create-project laravel/laravel .
 ```
+Install debug bar
+
+```
+ docker-compose run --rm composer require barryvdh/laravel-debugbar --dev
+```
 
 Run artisan command
 
