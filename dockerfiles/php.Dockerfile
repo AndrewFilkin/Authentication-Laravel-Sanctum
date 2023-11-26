@@ -11,3 +11,7 @@ RUN set -ex \
     postgresql-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql
+
+#Install npn
+#RUN apk add --update nodejs npm
+#RUN npm install

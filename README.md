@@ -23,6 +23,17 @@ Install debug bar
  docker-compose run --rm composer require barryvdh/laravel-debugbar --dev
 ```
 
+.env setting database
+
+```
+DB_CONNECTION=pgsql
+DB_HOST=pgsql
+DB_PORT=5432
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel
+DB_PASSWORD=password
+```
+
 Run artisan command
 
 ```bash
