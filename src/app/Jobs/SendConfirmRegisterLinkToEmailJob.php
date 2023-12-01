@@ -28,7 +28,6 @@ class SendConfirmRegisterLinkToEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        sleep(15);
         $link = 'https://google.com';
         Mail::to('recipient@example.com')->send(new SendRegisterLinkMail($link));
     }

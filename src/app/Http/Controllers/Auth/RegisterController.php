@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendRegisterLinkMail;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -28,10 +30,22 @@ class RegisterController extends Controller
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
 
+        //generate random code for email verified
+        $id = $user->id;
+        $randomCode = $id . '_' . bin2hex(random_bytes(8)); // Generates a random 8-character hexadecimal code
 
-        $token = $user->createToken('personal-token', expiresAt:now()->addDay())->plainTextToken;
+        //send verified link to email
+        $link = "http://localhost:8000/$randomCode";
 
+        Mail::to('recipient@example.com')->send(new SendRegisterLinkMail($link));
+        return response()->json($link);
 
-        return response()->json(['token' => $token], 200);
+//        $token = $user->createToken('personal-token', expiresAt:now()->addDay())->plainTextToken;
+//
+//        return response()->json(['token' => $token], 200);
     }
+
+
+
+
 }
