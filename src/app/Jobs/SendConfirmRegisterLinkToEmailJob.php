@@ -15,12 +15,10 @@ class SendConfirmRegisterLinkToEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     */
-    public function __construct()
+
+    public function __construct(private $link)
     {
-        //
+
     }
 
     /**
@@ -28,7 +26,6 @@ class SendConfirmRegisterLinkToEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $link = 'https://google.com';
-        Mail::to('recipient@example.com')->send(new SendRegisterLinkMail($link));
+        Mail::to('recipient@example.com')->send(new SendRegisterLinkMail($this->link));
     }
 }

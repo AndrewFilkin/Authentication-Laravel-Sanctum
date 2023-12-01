@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendConfirmRegisterLinkToEmailJob;
 use App\Mail\SendRegisterLinkMail;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -36,9 +37,8 @@ class RegisterController extends Controller
 
         //send verified link to email
         $link = "http://localhost:8000/$randomCode";
-
-        Mail::to('recipient@example.com')->send(new SendRegisterLinkMail($link));
-        return response()->json($link);
+        dispatch(new SendConfirmRegisterLinkToEmailJob($link));
+        return response()->json($user);
 
 //        $token = $user->createToken('personal-token', expiresAt:now()->addDay())->plainTextToken;
 //
