@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 
 class RegisterController extends Controller
@@ -38,6 +39,12 @@ class RegisterController extends Controller
         //send verified link to email
         $link = "http://localhost:8000/$randomCode";
         dispatch(new SendConfirmRegisterLinkToEmailJob($link));
+
+        //save verified link to field
+        $user->email_verified_at = Carbon::now();
+        $user->verified_code = $randomCode;
+        $user->save();
+
         return response()->json($user);
 
 //        $token = $user->createToken('personal-token', expiresAt:now()->addDay())->plainTextToken;
