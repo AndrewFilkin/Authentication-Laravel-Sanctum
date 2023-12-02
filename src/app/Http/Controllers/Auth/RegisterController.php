@@ -37,7 +37,7 @@ class RegisterController extends Controller
         $randomCode = $id . '_' . bin2hex(random_bytes(8)); // Generates a random 8-character hexadecimal code
 
         //send verified link to email
-        $link = "http://localhost:8000/$randomCode";
+        $link = "http://localhost:8000/email-verified/$randomCode";
         dispatch(new SendConfirmRegisterLinkToEmailJob($link));
 
         //save verified link to field
