@@ -57,6 +57,13 @@ services:
         networks:
             - laravel
 
+#    crontab:
+#        build:
+#            context: dockerfiles
+#            dockerfile: crone.Dockerfile
+#        networks:
+#            - laravel
+
     composer:
         build:
             context: dockerfiles
