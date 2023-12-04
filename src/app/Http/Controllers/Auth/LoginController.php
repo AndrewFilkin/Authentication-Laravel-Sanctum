@@ -21,7 +21,12 @@ class LoginController extends Controller
             return response()->json(['error' => $validator->errors()], 401);
         }
 
+
         $user = User::where('email', $request->email)->first();
+
+        if ($user->verified_code !== 'Successes') {
+            return response()->json(['error confirmation' => 'Please confirm your email'], 401);
+        }
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['error' => 'The provided credentials are incorrect.'], 401);

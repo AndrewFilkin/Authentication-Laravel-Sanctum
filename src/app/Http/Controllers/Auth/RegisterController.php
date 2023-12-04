@@ -27,7 +27,6 @@ class RegisterController extends Controller
             return response()->json(['error' => $validator->errors()], 401);
         }
 
-
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
@@ -46,7 +45,6 @@ class RegisterController extends Controller
         $user->save();
 
         return response()->json($user);
-
 //        $token = $user->createToken('personal-token', expiresAt:now()->addDay())->plainTextToken;
 //
 //        return response()->json(['token' => $token], 200);

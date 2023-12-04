@@ -20,7 +20,7 @@ class EmailVerifiedController extends Controller
             $user = User::find($userId);
             if ($user) {
                 $user->email_verified_at = Carbon::now();
-                $user->verified_code = "Successes";
+                $user->verified_code = 'Successes';
                 $user->save();
 
                 $token = $user->createToken('personal-token', expiresAt: now()->addDay())->plainTextToken;
