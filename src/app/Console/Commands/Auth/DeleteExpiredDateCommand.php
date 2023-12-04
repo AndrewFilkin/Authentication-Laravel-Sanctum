@@ -3,6 +3,8 @@
 namespace App\Console\Commands\Auth;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DeleteExpiredDateCommand extends Command
 {
@@ -25,6 +27,12 @@ class DeleteExpiredDateCommand extends Command
      */
     public function handle()
     {
-        $this->info('My cron job ran successfully!');
+        $now = Carbon::now();
+
+        $oneDayAgo = $now->subDay();
+
+        $tokensToDelete = DB::table('personal_access_tokens')->where('expires_at', '<', $oneDayAgo)->delete();
+
+        $this->info($tokensToDelete);
     }
 }
