@@ -1,1 +1,2 @@
-* * * * * /create_file.sh
+# test crontab - * * * * * /create_file.sh
+* * * * * cd /var/www/laravel && php artisan schedule:run >> /dev/null 2>&1
