@@ -16,14 +16,15 @@ class ResetPasswordController extends Controller
         // Check if the user with the given email exists
         $user = User::where('email', $email)->first();
 
-        if ($user) {
+
+//        return response()->json($user->remember_token);
+
+        if (empty($user->remember_token) or $user->remember_token == 'Confirm') {
             $user->remember_token = bin2hex(random_bytes(8));
             $user->save();
-
-            return response()->json(['exists' => true]);
+            return response()->json(['message' => 'Code send on your email, please confirm']);
         } else {
-            // User with the provided email does not exist
-            return response()->json(['exists' => false]);
+            return response()->json(['token' => "token is sent, please check your email"]);
         }
     }
 }
