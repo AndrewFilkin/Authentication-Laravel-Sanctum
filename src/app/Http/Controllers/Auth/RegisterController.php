@@ -45,9 +45,6 @@ class RegisterController extends Controller
         $user->save();
 
         return response()->json($user);
-//        $token = $user->createToken('personal-token', expiresAt:now()->addDay())->plainTextToken;
-//
-//        return response()->json(['token' => $token], 200);
     }
 
 
