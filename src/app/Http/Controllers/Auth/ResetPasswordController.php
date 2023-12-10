@@ -34,15 +34,12 @@ class ResetPasswordController extends Controller
         $oneLineJsonString = str_replace(' ', '', $jsonString);
         $encryptedJson = Crypt::encrypt($oneLineJsonString);
 
-//        $decryptedData = Crypt::decrypt($encryptedJson);
-
         // Check if the user with the given email exists
         $user = User::where('email', $email)->first();
 
-//        return response()->json($user->remember_token);
 
-        if (empty($user->remember_token) or $user->remember_token == 'Confirm') {
-            $user->remember_token = $encryptedJson;
+        if (empty($user->reset_token) or $user->reset_token == 'Confirm') {
+            $user->reset_token = $encryptedJson;
             $user->save();
 
             $resetLink = "http://localhost:8000/email-reset/$encryptedJson";
