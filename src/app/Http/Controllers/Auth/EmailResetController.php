@@ -25,6 +25,7 @@ class EmailResetController extends Controller
         if ($user->reset_token !== $emailResetCode) {
             echo 'Something wrong, please try again';
         } else {
+
             // Update the password
             $user->password = Hash::make($jsonUserData->password);
             $user->reset_token = 'Confirm';
